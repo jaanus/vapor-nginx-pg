@@ -18,6 +18,7 @@ version: '3.7'
 
 volumes:
   db_data:
+  db_test_data:
 
 networks: 
   frontend:
@@ -43,6 +44,17 @@ services:
       - frontend
       - backend
     depends_on:
+      - backend
+
+  # nginx reverse proxy for the app that is running in Xcode.
+  frontend-xcode:
+    image: frontend-xcode
+    build:
+      context: ./frontend-xcode
+    ports:
+      - "8082:8082"
+    networks:
+      - frontend
       - backend
 
   # The actual Vapor app. Note that the ports are not exposed to external network,
@@ -104,3 +116,20 @@ services:
       - '5432:5432'
     networks:
       - backend
+
+  # Application database for running tests.
+  # Cleared at the start of each test.
+  testdb:
+    image: postgres:12-alpine
+    volumes:
+      - db_test_data:/var/lib/postgresql/data/pgdata
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: vapor_username
+      POSTGRES_PASSWORD: vapor_password
+      POSTGRES_DB: vapor_database
+    ports:
+      - '5433:5432'
+    networks: 
+      - backend
+  
