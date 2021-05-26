@@ -7,3 +7,7 @@ DerivedData/
 db.sqlite
 .swiftpm
 
+# Don’t store the certificate and key in version control.
+# Must always generate these locally. See README for more info.
+development.crt
+development.key
