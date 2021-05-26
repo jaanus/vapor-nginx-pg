@@ -43,7 +43,7 @@ As an exercise, run the Vapor app in Xcode, and then run this cURL command from 
 curl -X POST --header "Content-type: application/json" --data '{"title": "first todo"}'  -v https://localhost:8082/todos
 ```
 
-Observe your Docker Desktop console, Xcode console, and database content change.
+Observe the cURL output, your Docker Desktop console, Xcode console, and database content change.
 
 ### Running tests
 
