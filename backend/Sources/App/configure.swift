@@ -15,7 +15,13 @@ public func configure(_ app: Application) throws {
         database: Environment.get("DATABASE_NAME") ?? "vapor_database"
     ), as: .psql)
 
-    app.migrations.add(CreateTodo())
+    app.migrations.add(M01_CreateTodo())
+    app.migrations.add(M02_AddTimestamp())
+    
+    if app.environment != .testing {
+        // Migrations for testable app are implemented in Application+Testable.
+        try app.autoMigrate().wait()
+    }
 
     // register routes
     try routes(app)
