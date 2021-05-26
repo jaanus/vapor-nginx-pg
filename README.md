@@ -35,7 +35,7 @@ Here are the scenarios that I have considered and tested for this project, and h
 
 **What:** You need to implement some business logic and functionality in Vapor. Just check out this project, and start modifying the Vapor part of the code. You can open the `backend` folder with Xcode and just run the project.
 
-**How:** Just clone this repo, provide the key and certificate as discussed above, and run `docker compose up -d`. You can access the server with HTTPS at `https://localhost:8082` or `https://[your-mac-hostname-or-ip]:8082`. You can do this from any macOS or iOS device and it should just work, given that you have installed the development CA certificate with the above instructions. Inspect the database at the standard location `localhost:5432` with your favorite PostgreSQL client.
+**How:** Just clone this repo, provide the key and certificate as discussed above, and run `docker compose up -d`. Then, run the project in Xcode. You can access the server with HTTPS at `https://localhost:8082` or `https://[your-mac-hostname-or-ip]:8082`. You can do this from any macOS or iOS device and it should just work, given that you have installed the development CA certificate with the above instructions. Inspect the database at the standard location `localhost:5432` with your favorite PostgreSQL client.
 
 As an exercise, run the Vapor app in Xcode, and then run this cURL command from your Terminal:
 
