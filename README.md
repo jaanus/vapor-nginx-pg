@@ -37,6 +37,14 @@ Here are the scenarios that I have considered and tested for this project, and h
 
 **How:** Just clone this repo, provide the key and certificate as discussed above, and run `docker compose up -d`. You can access the server with HTTPS at `https://localhost:8082` or `https://[your-mac-hostname-or-ip]:8082`. You can do this from any macOS or iOS device and it should just work, given that you have installed the development CA certificate with the above instructions. Inspect the database at the standard location `localhost:5432` with your favorite PostgreSQL client.
 
+As an exercise, run the Vapor app in Xcode, and then run this cURL command from your Terminal:
+
+```
+curl -X POST --header "Content-type: application/json" --data '{"title": "first todo"}'  -v https://localhost:8082/todos
+```
+
+Observe your Docker Desktop console, Xcode console, and database content change.
+
 ### Running tests
 
 **What:** You should write tests for your Vapor project. Run these tests with standard Xcode facilities. The tests run against a separate PostgreSQL database instance that is distinct from your application database, since the data is cleared out at each test invocation.
