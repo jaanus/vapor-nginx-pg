@@ -20,10 +20,7 @@ See [this blog post](https://jaanus.com/ios-13-certificates/) for a discussion o
 
 Create a temporary working folder. Follow the instructions in the blog post to generate your keys and certificates into that folder, and install the CA certificates into your devices. You will end up with a bunch of files, but only a few are relevant for this project.
 
-After completing the generation process, do the following.
-
-1. Add the development CA certificate to the server certificate, so that you end up with a single file containing the certificate chain. `cat development-ca.crt >> development.crt`.
-1. Copy `development.crt` and `development.key` into `frontend/nginx` and `frontend-xcode/nginx`, next to `nginx.conf` that is already present in those folders.
+After completing the generation process, copy `development.crt` and `development.key` into `frontend/nginx` and `frontend-xcode/nginx`, next to `nginx.conf` that is already present in those folders.
 
 That’s it. You can now run the system with `docker compose up` (add `-d` flag to daemonize if you want).
 
